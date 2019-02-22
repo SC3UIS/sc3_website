@@ -12,6 +12,11 @@
     color: #8ccd38;
   }
   
+  .logo {
+      height: 2em;
+      padding-right: 1em;
+  }
+
   .text-primary {
     color: #a5cd38 !important;
   }
