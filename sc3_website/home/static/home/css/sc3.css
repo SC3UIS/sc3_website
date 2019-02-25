@@ -86,3 +86,21 @@
     background-color: #a5cd38;
   }
   
+  .map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+  }
+
+  .tabbed {
+    padding-left: 2em;
+  }
+
+  .top-space {
+    margin-top: 25px;
+  }
+
+  .gmap-icon {
+    float: right;
+    height: 2em;
+  }
