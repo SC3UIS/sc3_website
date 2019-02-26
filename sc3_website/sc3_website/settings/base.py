@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import yaml
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -26,6 +27,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'docs',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -140,9 +142,10 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
+
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -163,3 +166,12 @@ EMAIL_HOST_USER = 'myemail@gmail.com'
 EMAIL_HOST_PASSWORD = 'asdasdasd'
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
+
+# MKDOCS SETTINGS
+MKDOCS_CONFIG = os.path.join(BASE_DIR, 'mkdocs.yml')
+DOCS_DIR = ''
+DOCS_STATIC_NAMESPACE = ''
+
+with open(MKDOCS_CONFIG, 'r') as f:
+    DOCS_DIR = yaml.load(f, Loader=yaml.Loader)['site_dir']
+    DOCS_STATIC_NAMESPACE = os.path.basename(DOCS_DIR)

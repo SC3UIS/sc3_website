@@ -1,0 +1,8 @@
+site_name: SC3 UIS Documentación
+
+docs_dir: 'mkdocs'
+site_dir: 'docs/static/mkdocs_build'
+
+nav:
+  - Home: index.md
+
