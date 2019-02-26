@@ -1,0 +1,55 @@
+{% load static %}
+
+{% block content %}
+    <form id="contactForm" name="contactForm" role="form" action="{% url 'contact' %}" method="post" novalidate="novalidate">
+        {% csrf_token %}
+        <div class="row">
+            {% if sent %}
+            <div class="alert alert-success" role="alert">
+                This is a success alert—check it out!
+            </div>
+            {% endif %}
+            <div class="col-md-6">
+                <div class="form-group">
+                  {{ form.contact_name }}
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                  {{ form.contact_email }}
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                {{ form.content }}
+                <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dirección de correspondencia:</h5>
+                        <p class="card-text">
+                        Universidad Industrial de Santander.<br>
+                        Carrera 27 Calle 9 - Centic 4 Piso.<br>
+                        Bucaramanga, Santander</p>
+    
+                        <p>Teléfono: (57)(7)6344000<br>
+                        <span class="tabbed">Administración - Ext. 1251</span><br>
+                        <span class="tabbed">Soporte -  Ext. 2855</span><br>
+                        <span class="tabbed">Guatiguara - Ext. 3515</span></p>
+                        Sede Bucaramanga: <a href="https://goo.gl/maps/Qc5QL4shNRD2" target="_blank"><img class="logo" src="{% static 'home/img/icons/gmap.jpeg' %}"></a><br>
+                        Sede Piedecuesta: <a href="https://goo.gl/maps/aHnydW8MEpr" target="_blank"><img class="logo" src="{% static 'home/img/icons/gmap.jpeg' %}"></a>
+                    </div>
+                    </div>
+                </div>
+                </div>            
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12 text-center">
+                <div id="success"></div>
+                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">ENVIAR MENSAJE</button>
+            </div>
+            </div>
+    </form>
+{% endblock %}
