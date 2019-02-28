@@ -44,8 +44,14 @@
   
   #mainNav {
     background-color: #212529;
+
   }
   
+  .navbar {
+    height: 40px;
+    min-height: inherit;
+  }
+
   #mainNav .navbar-toggler {
     background-color: #a5cd38;}
   

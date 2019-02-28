@@ -2,7 +2,14 @@ site_name: SC3 UIS Documentación
 
 docs_dir: 'mkdocs'
 site_dir: 'docs/static/mkdocs_build'
-
+theme:
+  name: 'material'
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
+    
 nav:
   - Home: index.md
+  - Servicios: services.md
 
