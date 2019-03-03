@@ -11,10 +11,17 @@
   a:hover {
     color: #8ccd38;
   }
-  
+
   .logo {
-      height: 1.5em;
-      padding-left: 1em;
+    height: 2em;
+  }
+
+  .go-left {
+    float: left;
+  }
+
+  .go-right {
+    float: right;
   }
 
   .text-primary {
@@ -44,12 +51,7 @@
   
   #mainNav {
     background-color: #212529;
-
-  }
-  
-  .navbar {
-    height: 40px;
-    min-height: inherit;
+    padding: 0; 
   }
 
   #mainNav .navbar-toggler {
@@ -109,4 +111,8 @@
   .gmap-icon {
     float: right;
     height: 2em;
+  }
+
+  .change-display {
+    flex-direction: column;
   }
