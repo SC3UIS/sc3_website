@@ -19,6 +19,8 @@ urlpatterns = [
 
     url(r'^contact/$', home_views.contact, name='contact'),
 
+    url(r'^users/', include('users.urls')),
+
     url(r'^docs/', include('docs.urls')),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

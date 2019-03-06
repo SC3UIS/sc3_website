@@ -1,0 +1,24 @@
+<h1>Proyectos</h1>
+
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Requisitos técnicos</th>
+        <th>Estado</th>
+        <th>Institución</th>
+    </tr>
+    <tbody>
+        {% for project in project_list %}
+        <tr>
+            <td>{{ project.title }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.tech_reqs }}</td>
+            <td>{{ project.status }}</td>
+            <td>{{ project.institution }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'project_new' %}">New Project</a>

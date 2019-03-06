@@ -1,0 +1,44 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <h3>Inscribir Nuevo Proyecto</h3>
+  </div>
+  <div class="row">
+      <div class="col-md-10 offset-md-1 ">
+        {{ form.media }}
+        <form method="POST" action="{% url 'project_new' %}">
+          <div class="form-group">
+              {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    {{ field.label_tag }}
+                    {{ field.errors }}
+                  </div>
+                  <div class="col-sm-8 pull-left">
+                    {{ field }}
+                  </div>
+                </div>                  
+              {% endfor %}
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+<script>
+  //$('#id_init_date').datetimepicker();
+  $('#id_end_date').datetimepicker({
+      useCurrent: true, //Important! See issue #1075
+      format: 'DD/MM/YYYY'
+  });
+  $("#id_init_date").on("dp.change", function (e) {
+    $('#id_end_date').data("DateTimePicker").minDate(e.date.add(90, 'd'));
+    $('#id_end_date').data("DateTimePicker").clear();
+  });
+
+</script>
+
+{% endblock %}

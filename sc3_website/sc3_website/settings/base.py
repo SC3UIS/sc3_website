@@ -28,6 +28,9 @@ INSTALLED_APPS = [
     'home',
     'search',
     'docs',
+    'users',
+
+    'bootstrap_datepicker_plus',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
