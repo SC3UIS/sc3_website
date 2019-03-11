@@ -27,7 +27,7 @@
                             <td>{{ project.responsible_email }}</td>
                             <td>{{ project.init_date|date:"d/m/Y" }} - {{ project.end_date|date:"d/m/Y" }}</td>
                             <td>{{ project.status }}</td>
-                            <td>{{ project.description }}</td>
+                            <td><div>{{ project.description }}</div></td>
                         </tr>
                         {% endfor %}
                     </tbody>
