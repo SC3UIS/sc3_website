@@ -2,41 +2,179 @@
 
 {% block content %}
 <div class="container">
-  <div class="row">
-    <h3>Inscribir Nuevo Proyecto</h3>
+  <div class="row justify-content-center">
+    <h3>Registro de Nuevo Proyecto en SC3</h3>
   </div>
-  <div class="row">
-      <div class="col-md-10 offset-md-1 ">
-        {{ form.media }}
-        <form method="POST" action="{% url 'project_new' %}">
-          <div class="form-group">
-              {% csrf_token %}
-                {% for field in form %}
-                <div class="form-group row">
-                  <div class="col-sm-4">
-                    {{ field.label_tag }}
-                    {{ field.errors }}
-                  </div>
-                  <div class="col-sm-8 pull-left">
-                    {{ field }}
-                  </div>
-                </div>                  
-              {% endfor %}
-          </div>
-        </form>
-      </div>
+  <div class="row top-space">
+    <div class="col-lg-12 top-space">
+      {{ form.media }}
+      <form id='myform' method="POST" action="{% url 'project_new' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <div class="col-md-3">
+                  <label class="sc3-label" for="{{ form.title.name }}">{{form.title.label}}</label>
+                  {{ form.title.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.title }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-3">
+                  <label class="sc3-label" for="{{ form.description.name }}">{{form.description.label}}</label>
+                  {{ form.description.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.description }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-3">
+                  <label class="sc3-label" for="{{ form.tech_reqs.name }}">{{form.tech_reqs.label}}</label>
+                  {{ form.tech_reqs.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.tech_reqs }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-3">
+                  <label class="sc3-label" for="{{ form.institution.name }}">{{form.institution.label}}</label>
+                  {{ form.institution.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.institution }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-3">
+                  <label class="sc3-label" for="{{ form.init_date.name }}">{{form.init_date.label}}</label>
+                  {{ form.init_date.errors }}
+                </div>
+                <div class="col-md-8">
+                    {{ form.init_date}}
+                    {{ form.end_date}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.responsible.name }}">{{form.responsible.label}}</label>
+                  {{ form.responsible.errors }}
+                </div>
+                <div class="col-md-8">
+                  {{ form.responsible }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.responsible_email.name }}">{{form.responsible_email.label}}</label>
+                  {{ form.responsible_email.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.responsible_email }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.num_accounts.name }}">{{form.num_accounts.label}}</label>
+                  {{ form.num_accounts.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.num_accounts }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.project_type.name }}">{{form.project_type.label}}</label>
+                  {{ form.project_type.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.project_type }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.project_type.name }}">{{form.research_area.label}}</label>
+                  {{ form.research_area.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.research_area }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.cost.name }}">{{form.cost.label}}</label>
+                  {{ form.cost.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.cost }}
+                </div>
+              </div>
+              <div id="coie" class="form-group row d-none">
+                <div class="col-md-4">
+                  <label class="sc3-label" for="{{ form.coie_percent.name }}">{{form.coie_percent.label}}</label>
+                  {{ form.coie_percent.errors }}
+                </div>
+                <div class="col-md-8 pull-left">
+                  {{ form.coie_percent }}
+                </div>
+              </div>
+            </div>
+          </div>        
+          <div class="form-group row">
+            <div class="offset-sm-4 col-sm-8">
+                <input class="btn btn-success col-sm-6" type="submit" value="Enviar">
+            </div>
+          </div>  
+      </form>          
+    </div>
   </div>
 </div>
 
 <script>
-  //$('#id_init_date').datetimepicker();
+  //Date picker functions
   $('#id_end_date').datetimepicker({
-      useCurrent: true, //Important! See issue #1075
+      useCurrent: false, //Important! See issue #1075
       format: 'DD/MM/YYYY'
-  });
+    });
   $("#id_init_date").on("dp.change", function (e) {
-    $('#id_end_date').data("DateTimePicker").minDate(e.date.add(90, 'd'));
-    $('#id_end_date').data("DateTimePicker").clear();
+    var end_date = e.date.add(90,'d');
+    $('#id_end_date').data("DateTimePicker").date(end_date);
+    $('#id_end_date').data("DateTimePicker").minDate(end_date);
+    calculateCost();
+    });
+    
+  $('#id_end_date').on('dp.change', function(e) {
+    calculateCost();
+  });
+
+  //Project cost function
+  function calculateCost(){
+    var init_date = $('#id_init_date').data("DateTimePicker").date();
+    var end_date = $('#id_end_date').data("DateTimePicker").date();
+    var project_type = $('#id_project_type').val();
+
+    if (init_date != null && end_date != null){
+      var days = Math.ceil((end_date.diff(init_date)) / (1000 * 60 * 60 * 24));
+      var months = Math.round(days/30);
+      if (project_type == 'uis'){
+        var costPerMonth = 3500000;
+        $('#coie').removeClass('d-none');
+      } else if (project_type == 'external'){
+        var costPerMonth = 6500000;
+        $('#coie').addClass('d-none');
+      }
+      var cost = months * costPerMonth;
+      $("input[id=id_cost]").val(cost)
+    }
+  }
+  
+  $('#id_project_type').change(function() {
+    calculateCost();
   });
 
 </script>
