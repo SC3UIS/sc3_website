@@ -1,24 +1,47 @@
-<h1>Proyectos</h1>
+{% extends 'users/base.html' %}
 
-<table border="1">
-    <tr>
-        <th>Título</th>
-        <th>Descripción</th>
-        <th>Requisitos técnicos</th>
-        <th>Estado</th>
-        <th>Institución</th>
-    </tr>
-    <tbody>
-        {% for project in project_list %}
-        <tr>
-            <td>{{ project.title }}</td>
-            <td>{{ project.description }}</td>
-            <td>{{ project.tech_reqs }}</td>
-            <td>{{ project.status }}</td>
-            <td>{{ project.institution }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h3>Lista de Proyectos Aprobados</h3>
+    </div>
+    <div class="row top-space">
+        <div class="col-lg-10 offset-lg-1">
+            <div class="table-responsive-md">
+                <table id="project-list" class="table table-stripped table-hover">
+                    <thead class="table-active">
+                        <th>TÍTULO</td>
+                        <th>RESPONSABLE</td>
+                        <th>INSTITUCIÓN</td>
+                        <th>E-MAIL</td>
+                        <th>INICIO - FIN</td>
+                        <th>ESTADO</td>
+                        <th>DESCRIPCIÓN</td>
+                    </thead>
+                    <tbody>
+                        {% for project in project_list %}
+                        <tr>
+                            <td>{{ project.title }}</td>
+                            <td>{{ project.responsible }}</td>
+                            <td>{{ project.institution }}</td>
+                            <td>{{ project.responsible_email }}</td>
+                            <td>{{ project.init_date|date:"d/m/Y" }} - {{ project.end_date|date:"d/m/Y" }}</td>
+                            <td>{{ project.status }}</td>
+                            <td>{{ project.description }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a href="{% url 'project_new' %}">New Project</a>
+<script>
+    $(document).ready(function() {
+        $('#project-list').DataTable();
+    });
+</script>
+<!--<a href="{% url 'project_new' %}">New Project</a>-->
+
+{% endblock %}

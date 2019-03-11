@@ -116,3 +116,8 @@
   .change-display {
     flex-direction: column;
   }
+
+  .table td {
+    height: 4em;
+    overflow-y: auto;
+  }
