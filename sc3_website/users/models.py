@@ -2,6 +2,16 @@ from django.db import models
 
 class ResearchArea(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    status_choices = (
+        ('accepted', 'Accepted'),
+        ('rejected', 'Rejected'),
+        ('pending', 'Pending Approval')
+    )
+    status = models.CharField(
+        max_length=10,
+        choices = status_choices,
+        default = 'pending'
+    ) 
 
     def __str__(self):
         return self.name
