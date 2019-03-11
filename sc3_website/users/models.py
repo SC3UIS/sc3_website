@@ -14,13 +14,14 @@ class Project(models.Model):
     status_choices = (
         ('active', 'Active'),
         ('ended', 'Ended'),
-        ('rejected', 'Rejected')
+        ('rejected', 'Rejected'),
+        ('pending','Pending Approval')
     )
     status = models.CharField(
         max_length=10,
         verbose_name = 'Estado del Proyecto',
         choices = status_choices,
-        default = 'active')
+        default = 'pending')
 
     institution = models.CharField(max_length=100)
     init_date = models.DateField()
