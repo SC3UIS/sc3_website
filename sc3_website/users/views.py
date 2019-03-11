@@ -9,6 +9,8 @@ from .forms import ProjectCreateForm
 class ProjectList(ListView):
     model = Project
 
+    ordering = ['-init_date']
+
 class ProjectView(DetailView):
     model = Project
 
