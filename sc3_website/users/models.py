@@ -1,20 +1,19 @@
 from django.db import models
 
+
 class ResearchArea(models.Model):
     name = models.CharField(max_length=100, unique=True)
     status_choices = (
         ('accepted', 'Accepted'),
         ('rejected', 'Rejected'),
-        ('pending', 'Pending Approval')
+        ('pending', 'Pending Approval'),
     )
     status = models.CharField(
-        max_length=10,
-        choices = status_choices,
-        default = 'pending'
-    ) 
+        max_length=10, choices=status_choices, default='pending')
 
     def __str__(self):
         return self.name
+
 
 class Project(models.Model):
     title = models.CharField(max_length=500)
@@ -25,13 +24,13 @@ class Project(models.Model):
         ('active', 'Active'),
         ('ended', 'Ended'),
         ('rejected', 'Rejected'),
-        ('pending','Pending Approval')
+        ('pending', 'Pending Approval'),
     )
     status = models.CharField(
         max_length=10,
-        verbose_name = 'Estado del Proyecto',
-        choices = status_choices,
-        default = 'pending')
+        verbose_name='Estado del Proyecto',
+        choices=status_choices,
+        default='pending')
 
     institution = models.CharField(max_length=100)
     init_date = models.DateField()
@@ -41,17 +40,15 @@ class Project(models.Model):
     num_accounts = models.IntegerField()
 
     project_type_choices = (
-        ('','Seleccione el tipo de projecto'),
+        ('', 'Seleccione el tipo de projecto'),
         ('uis', 'UIS'),
-        ('external', 'Externo')
+        ('external', 'Externo'),
     )
     project_type = models.CharField(
         max_length=10,
-        choices = project_type_choices,
+        choices=project_type_choices,
     )
-
     cost = models.FloatField(default=0)
     coie_percent = models.FloatField(default=0)
     renew_date = models.DateField(null=True)
     research_area = models.ForeignKey(ResearchArea, on_delete=models.CASCADE)
-    
