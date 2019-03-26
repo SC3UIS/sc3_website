@@ -6,13 +6,15 @@ from django.urls import reverse_lazy
 from .models import Project
 from .forms import ProjectCreateForm
 
+
 class ProjectList(ListView):
     model = Project
-
     ordering = ['-init_date']
+
 
 class ProjectView(DetailView):
     model = Project
+
 
 class ProjectCreate(CreateView):
     model = Project
@@ -20,5 +22,3 @@ class ProjectCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('project_list')
-    
-
