@@ -1,2 +1,4 @@
-Django>=2.0,<2.1
-wagtail>=2.2,<2.3
+django_bootstrap_datepicker_plus==3.0.5
+Django==2.0.13
+wagtail==2.2.2
+PyYAML==5.1
